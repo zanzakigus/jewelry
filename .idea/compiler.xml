@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="jewelryStore" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="jewelryStore" options="-endorseddirs /home/zanzakigus/NetBeansProjects/jewelryStore/target/endorsed" />
     </option>
   </component>
 </project>

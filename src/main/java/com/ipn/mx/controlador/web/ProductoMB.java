@@ -7,8 +7,8 @@ package com.ipn.mx.controlador.web;
 
 import com.ipn.mx.dao.CategoriaDAO;
 import com.ipn.mx.dao.ProductoDAO;
-import com.ipn.mx.entidades.Categoria;
-import com.ipn.mx.entidades.Producto;
+import com.ipn.mx.entities.Categoria;
+import com.ipn.mx.entities.Producto;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

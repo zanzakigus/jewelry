@@ -1,12 +1,76 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"/>
+        <!-- Custom Stylesheet -->
+        <ui:include src="shared/resources.xhtml"></ui:include>
     </h:head>
     <h:body>
-        Hello from Facelets
+
+        <ui:include src="shared/loading.xhtml"></ui:include>
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <ui:include src="shared/navHeader.xhtml"></ui:include>
+
+            <ui:include src="shared/header.xhtml"></ui:include>
+
+            <ui:include src="shared/sideBarNav.xhtml"></ui:include>
+
+            <!--**********************************
+                Content body start
+            ***********************************-->
+            <div class="content-body">
+
+                <div class="row page-titles mx-0">
+                    <div class="col p-md-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- row -->
+
+                <div class="container-fluid">
+
+                </div>
+                <!-- #/ container -->
+            </div>
+            <!--**********************************
+                Content body end
+            ***********************************-->
+
+
+            <!--**********************************
+                Footer start
+            ***********************************-->
+            <div class="footer">
+                <div class="copyright">
+
+                </div>
+            </div>
+            <!--**********************************
+                Footer end
+            ***********************************-->
+        </div>
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+        <ui:include src="shared/resourcesJs.xhtml"></ui:include>
+
     </h:body>
 </html>
 
