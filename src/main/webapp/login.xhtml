@@ -59,12 +59,20 @@
     <ui:include src="shared/resourcesJs.xhtml"></ui:include>
 
 
-    <ui:fragment rendered="#{loginMB.respuesta!=null}">
+    <ui:fragment rendered="#{loginMB.respuesta}">
         <script>
 
             $( document ).ready(function() {
                 toastError("Invalidos","Las credenciales son invalidas favor de verificar");
             });
+
+        </script>
+    </ui:fragment>
+    <ui:fragment rendered="#{loginMB.logged}">
+        <script>
+
+            window.location.replace("/faces/index.xhtml");
+            //window.location.replace("/jewelryStore/faces/index.xhtml");
 
         </script>
     </ui:fragment>
