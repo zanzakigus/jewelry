@@ -68,7 +68,7 @@
 
         </script>
     </ui:fragment>
-    <ui:fragment rendered="#{loginMB.logged}">
+    <ui:fragment rendered="#{loginMB.logged || sessionScope.usuario!=null}">
         <script>
 
             window.location.replace("/faces/index.xhtml");

@@ -55,47 +55,50 @@
                                 <li><h:commandLink action="./email-inbox.html">Enviar Correo</h:commandLink></li>
                             </ul>
                         </li>
-                        <li class="nav-label">Administracion</li>
-                        <li>
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-user menu-icon"></i> <span class="nav-text">Clientes</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><h:commandLink action="./email-inbox.html">Crear Cliente</h:commandLink></li>
-                                <li><h:commandLink action="./email-read.html">Lista de Clientes</h:commandLink></li>
-                                <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-diamond menu-icon"></i> <span class="nav-text">Productos</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><h:commandLink action="./email-inbox.html">Crear Producto</h:commandLink></li>
-                                <li><h:commandLink action="./email-read.html">Lista de Productos</h:commandLink></li>
-                                <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-folder-alt menu-icon"></i> <span class="nav-text">Categorias</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><h:commandLink action="./email-inbox.html">Crear Categoria</h:commandLink></li>
-                                <li><h:commandLink action="./email-read.html">Lista de Categorias</h:commandLink></li>
-                                <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-people menu-icon"></i> <span class="nav-text">Usuarios</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><h:commandLink action="./email-inbox.html">Crear Usuario</h:commandLink></li>
-                                <li><h:commandLink action="./email-read.html">Lista de Usuarios</h:commandLink></li>
-                                <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
-                            </ul>
-                        </li>
+                        <ui:fragment rendered="#{sessionScope.tipo=='admin'}">
+                            <li class="nav-label">Administracion</li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                    <i class="icon-user menu-icon"></i> <span class="nav-text">Clientes</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><h:commandLink action="./email-inbox.html">Crear Cliente</h:commandLink></li>
+                                    <li><h:commandLink action="./email-read.html">Lista de Clientes</h:commandLink></li>
+                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                    <i class="icon-diamond menu-icon"></i> <span class="nav-text">Productos</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><h:commandLink action="./email-inbox.html">Crear Producto</h:commandLink></li>
+                                    <li><h:commandLink action="./email-read.html">Lista de Productos</h:commandLink></li>
+                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                    <i class="icon-folder-alt menu-icon"></i> <span class="nav-text">Categorias</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><h:commandLink action="./email-inbox.html">Crear Categoria</h:commandLink></li>
+                                    <li><h:commandLink action="./email-read.html">Lista de Categorias</h:commandLink></li>
+                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                    <i class="icon-people menu-icon"></i> <span class="nav-text">Usuarios</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><h:commandLink action="./email-inbox.html">Crear Usuario</h:commandLink></li>
+                                    <li><h:commandLink action="./email-read.html">Lista de Usuarios</h:commandLink></li>
+                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                </ul>
+                            </li>
+                        </ui:fragment>
+
                     </ul>
                 </div>
             </div>

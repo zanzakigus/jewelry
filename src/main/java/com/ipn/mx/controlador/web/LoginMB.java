@@ -72,6 +72,7 @@ public class LoginMB extends BaseBean implements Serializable {
     public String preparedLogged() {
         return "/index.xhtml?faces-redirect=true";
     }
+
     public void login() {
 /*        String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("txtUsuarioPassword");
         String password = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("claveSel");*/
@@ -99,5 +100,19 @@ public class LoginMB extends BaseBean implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void logOut() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+        session.removeAttribute("usuario");
+        session.removeAttribute("tipo");
+        /*  Se tiene que validar que efectivamente se haya removido el atributo ya que de no
+            ser es necesario invaliar la sesion
+         */
+        if (session.getAttribute("usuario") != null || session.getAttribute("tipo") != null) {
+            session.invalidate();
+        }
+        preparedIndex();
+
     }
 }
