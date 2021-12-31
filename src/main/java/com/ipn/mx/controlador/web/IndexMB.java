@@ -25,6 +25,7 @@ public class IndexMB extends BaseBean implements Serializable {
      */
     public IndexMB() {
     }
+
     @PostConstruct
     public void init() {
 

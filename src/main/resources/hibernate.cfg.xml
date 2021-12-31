@@ -22,10 +22,17 @@
 
 
         <!--Aqui inicia la definicion de las clases de tipo entidad-->
-        <mapping class="com.ipn.mx.entidades.Categoria"/>
-        <mapping class="com.ipn.mx.entidades.Producto"/>
-        <mapping class="com.ipn.mx.entidades.TipoUsuario"/>
-        <mapping class="com.ipn.mx.entidades.Usuario"/>
+        <mapping class="com.ipn.mx.entities.Usuario"/>
+        <mapping class="com.ipn.mx.entities.TipoPago"/>
+        <mapping class="com.ipn.mx.entities.Producto"/>
+        <mapping class="com.ipn.mx.entities.TransaccionTotal"/>
+        <mapping class="com.ipn.mx.entities.Estado"/>
+        <mapping class="com.ipn.mx.entities.TipoRol"/>
+        <mapping class="com.ipn.mx.entities.Cliente"/>
+        <mapping class="com.ipn.mx.entities.Ciudad"/>
+        <mapping class="com.ipn.mx.entities.Categoria"/>
+        <mapping class="com.ipn.mx.entities.TransaccionUnitaria"/>
+
 
 
     </session-factory>
