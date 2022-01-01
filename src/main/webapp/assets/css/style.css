@@ -21438,4 +21438,5 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 .card-title-line {
     margin: 25px 0 !important;
+    font-size: 30px;
 }

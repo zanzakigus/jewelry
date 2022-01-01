@@ -77,7 +77,8 @@
 
                                                 <div class="form-group row text-center">
                                                     <div class="col-lg-12 ml-auto text-center">
-                                                        <h:commandLink action="#{categoriaMB.add()}" class="btn btn-primary">Crear Categoría</h:commandLink>
+                                                        <h:commandLink rendered="#{categoriaMB.modoCrear}" action="#{categoriaMB.add()}" class="btn btn-primary">Crear Categoría</h:commandLink>
+                                                        <h:commandLink rendered="#{categoriaMB.modoActualizar}" action="#{categoriaMB.update()}" class="btn btn-primary">Actualizar Categoría</h:commandLink>
                                                     </div>
                                                 </div>
                                         </div>

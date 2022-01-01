@@ -3,14 +3,32 @@ package com.ipn.mx.controlador.web;
 import com.ipn.mx.dao.CategoriaDAO;
 import com.ipn.mx.dao.ProductoDAO;
 import com.ipn.mx.entities.Categoria;
+import com.ipn.mx.entities.Grafica;
 import com.ipn.mx.entities.Producto;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtils;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 @ManagedBean(name = "categoriaMB")
@@ -78,21 +96,18 @@ public class CategoriaMB extends BaseBean implements Serializable {
     }
 
     public String preparedUpdate() {
-        dto = new Categoria();
         setAccion(ACC_ACTUALIZAR);
         return "/categoria/categoriaForm?faces-redirect=true";
     }
 
     public String preparedIndex() {
         init();
-        this.exito = false;
-        this.error = false;
         return "/categoria/listadoCategorias?faces-redirect=true";
     }
 
     public String preparedRespIndex() {
         init();
-        return "/categoria/listadoCategorias?faces-redirect=true";
+        return "/categoria/categoriaForm?faces-redirect=true";
     }
 
     public boolean validate() {
@@ -138,4 +153,44 @@ public class CategoriaMB extends BaseBean implements Serializable {
         dao.delete(dto);
         return preparedIndex();
     }
+
+
+    public void seleccionarCategoria(ActionEvent event) {
+        String claveSeleccionada = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("claveSel");
+        dto = new Categoria();
+        dto.setIdCategoria(Integer.parseInt(claveSeleccionada));
+
+        try {
+            dto = dao.read(dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String obtenerGrafica(){
+        JFreeChart grafica = ChartFactory.createPieChart("Productos por categoria", obtenerDatosGrafica(), true, true, Locale.getDefault());
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String archivo = servletContext.getRealPath("/grafica.png");
+        System.out.printf("ruta  :"+ archivo);
+        try {
+            ChartUtils.saveChartAsPNG(new File(archivo), grafica, 500, 500);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "/categoria/graficaCategoria?faces-redirect=true";
+    }
+
+    private PieDataset obtenerDatosGrafica() {
+        DefaultPieDataset dpd = new DefaultPieDataset();
+        List datos = dao.obtenerDatosGrafica();
+        for (int i = 0; i < datos.size(); i++) {
+            Grafica dto = (Grafica) datos.get(i);
+            dpd.setValue(dto.getNombre(), dto.getCantidad());
+        }
+        return dpd;
+
+    }
+
+
 }
