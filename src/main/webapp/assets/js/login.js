@@ -1,5 +1,4 @@
 function toastSuccess(titulo, texto) {
-    console.log("si entre")
     toastr.success(texto, titulo, {
         timeOut: 5e3,
         closeButton: !0,

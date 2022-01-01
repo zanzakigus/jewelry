@@ -60,13 +60,13 @@ jQuery(".form-valide").validate({
     },
     messages: {
         "val-username": {
-            required: "Please enter a username",
-            minlength: "Your username must consist of at least 3 characters"
+            required: "Por favor introducir un nombre de usuario",
+            minlength: "Debe contener al menos 3 caracteres"
         },
-        "val-email": "Please enter a valid email address",
+        "val-email": "Favor de introducir un correo valido",
         "val-password": {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long"
+            required: "Favor de escribir una contraseña",
+            minlength: "Su contraseña debe ser de al menos 5 caracteres"
         },
         "val-confirm-password": {
             required: "Please provide a password",

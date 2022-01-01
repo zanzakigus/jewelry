@@ -20,6 +20,7 @@ import java.util.ArrayList;
 @SessionScoped
 public class IndexMB extends BaseBean implements Serializable {
 
+    private String isIndex ="../";
     /**
      * Creates a new instance of IndexMB
      */
@@ -28,7 +29,16 @@ public class IndexMB extends BaseBean implements Serializable {
 
     @PostConstruct
     public void init() {
+        this.isIndex="";
 
+    }
+
+    public String getIsIndex() {
+        return isIndex;
+    }
+
+    public void setIsIndex(String isIndex) {
+        this.isIndex = isIndex;
     }
 
     public String preparedIndex() {
