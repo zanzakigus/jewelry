@@ -1,12 +1,15 @@
 package com.ipn.mx.controlador.web;
 
 import com.ipn.mx.dao.ProductoDAO;
+import com.ipn.mx.entities.Cliente;
 import com.ipn.mx.entities.Producto;
 import com.ipn.mx.entities.TransaccionTotal;
 import com.ipn.mx.entities.TransaccionUnitaria;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +18,12 @@ import java.util.List;
 @SessionScoped
 public class TransaccionUnitarioMB extends BaseBean implements Serializable {
 
-    private List<TransaccionUnitaria> listTransaccionUnitaria;
-    private List<Producto> listProducto;
+    private List<TransaccionUnitaria> uniListTransaccionUnitaria = new ArrayList<>();
+    private List<Producto> uniListProducto;
 
-    private ProductoDAO pDao = new ProductoDAO();
-    private TransaccionUnitaria dto;
+    private ProductoDAO uniPDao = new ProductoDAO();
+    private TransaccionUnitaria uniDto;
+    private TransaccionTotal ttDto = new TransaccionTotal();
 
 
 
@@ -31,39 +35,87 @@ public class TransaccionUnitarioMB extends BaseBean implements Serializable {
     }
 
     public List<TransaccionUnitaria> getListTransaccionUnitaria() {
-        return listTransaccionUnitaria;
+        return uniListTransaccionUnitaria;
     }
 
-    public void setListTransaccionUnitaria(List<TransaccionUnitaria> listTransaccionUnitaria) {
-        this.listTransaccionUnitaria = listTransaccionUnitaria;
+    public void setListTransaccionUnitaria(List<TransaccionUnitaria> uniListTransaccionUnitaria) {
+        this.uniListTransaccionUnitaria = uniListTransaccionUnitaria;
     }
 
     public void init(){
-        listTransaccionUnitaria = new ArrayList<>();
+        uniListTransaccionUnitaria = new ArrayList<>();
     }
 
     public List<Producto> getListProducto() {
-        return listProducto;
+        return uniListProducto;
     }
 
-    public void setListProducto(List<Producto> listProducto) {
-        this.listProducto = listProducto;
+    public void setListProducto(List<Producto> uniListProducto) {
+        this.uniListProducto = uniListProducto;
     }
 
     public TransaccionUnitaria getDto() {
-        return dto;
+        return uniDto;
     }
 
-    public void setDto(TransaccionUnitaria dto) {
-        this.dto = dto;
+    public void setDto(TransaccionUnitaria uniDto) {
+        this.uniDto = uniDto;
+    }
+
+    public TransaccionTotal getTtDto() {
+        return ttDto;
+    }
+
+    public void setTtDto(TransaccionTotal ttDto) {
+        this.ttDto = ttDto;
     }
 
     public String preparedAdd() {
-        dto = new TransaccionUnitaria();
-        listProducto = new ArrayList<>();
-        listProducto = pDao.readAll();
+        uniDto = new TransaccionUnitaria();
+        uniListProducto = new ArrayList<>();
+        uniListProducto = uniPDao.readAll();
+        uniDto.setPeso(uniListProducto.get(0).getPesoProducto());
+        uniDto.setDescuento(uniListProducto.get(0).getDescuentoProducto()*uniDto.getCantidad());
+        uniDto.setPrecioUnitario(uniListProducto.get(0).getPrecioProducto());
+        uniDto.setMonto(uniListProducto.get(0).getPrecioProducto()*uniDto.getCantidad());
+        uniDto.setIdPro(uniListProducto.get(0).getIdProducto());
+        uniDto.setIdProducto(uniListProducto.get(0));
         setAccion(ACC_CREAR);
         return "/transaccion/transaccionUnitariaForm?faces-redirect=true";
+    }
+
+    public void actualizaValor(ValueChangeEvent event) {
+        Producto est = new  Producto();
+        est.setIdProducto((int) event.getNewValue());
+        est = uniPDao.read(est);
+        uniDto.setPeso(est.getPesoProducto());
+        uniDto.setDescuento(est.getDescuentoProducto()*uniDto.getCantidad());
+        uniDto.setPrecioUnitario(est.getPrecioProducto());
+        uniDto.setMonto(est.getPrecioProducto()*uniDto.getCantidad());
+        uniDto.setIdProducto(est);
+        FacesContext.getCurrentInstance().renderResponse();
+    }
+
+    public void actualizaValorCantidad(ValueChangeEvent event) {
+        uniDto.setCantidad((int) event.getNewValue());
+        Producto est = new  Producto();
+        est.setIdProducto(uniDto.getIdPro());
+        est = uniPDao.read(est);
+        uniDto.setPeso(est.getPesoProducto());
+        uniDto.setDescuento(est.getDescuentoProducto()*uniDto.getCantidad());
+        uniDto.setPrecioUnitario(est.getPrecioProducto());
+        uniDto.setMonto(est.getPrecioProducto()*uniDto.getCantidad());
+        uniDto.setIdProducto(est);
+        FacesContext.getCurrentInstance().renderResponse();
+    }
+
+    public String add(){
+        this.uniListTransaccionUnitaria.add(uniDto);
+
+        ttDto.setTotal(ttDto.getTotal()+uniDto.getMonto());
+        ttDto.setDescuentoTotal(ttDto.getDescuentoTotal()+uniDto.getDescuento());
+        ttDto.setNetoTotal(ttDto.getTotal()-ttDto.getDescuentoTotal());
+        return "/transaccion/transaccionForm?faces-redirect=true";
     }
 
 }

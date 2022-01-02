@@ -54,6 +54,7 @@
                                 <h2 class="card-title card-title-line px-4 mb-3" style="font-size: 40px">Transacción</h2>
                                 <f:view>
                                     <h:form id="frmProducto">
+
                                         <div class="form-validation">
 
                                             <div class="form-group row">
@@ -80,10 +81,8 @@
                                                 </div>
                                             </div>
                                         <div class="table-responsive">
-                                            <f:view>
-                                                <h:form>
-                                                    <h:commandLink action="#{transaccionUnitariaMB.preparedAdd()}" immediate="true" styleClass="btn mb-1 btn-info"><f:param name="path" value="#{request.contextPath}"/> Agregar</h:commandLink>
-                                                    <h:dataTable var="dto" value="#{transaccionUnitariaMB.listTransaccionUnitaria}" class="table table-striped table-bordered zero-configuration">
+                                                    <h:commandLink immediate="true" action="#{transaccionMB.preparedAddUnit()}" class="btn mb-1 btn-info">Agregar</h:commandLink>
+                                                    <h:dataTable var="dto" value="#{transaccionMB.uniListTransaccionUnitaria}" class="table table-striped table-bordered zero-configuration">
                                                         <h:column>
                                                             <f:facet name="header">
                                                                 <h:outputText id="lblIdDescripcion" value="Nombre de Producto"/>
@@ -102,15 +101,25 @@
                                                             </f:facet>
                                                             <h:outputText value="#{dto.cantidad}"/>
                                                         </h:column>
-                                                        <!--<h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText id="lblmonto" value="Monto"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{dto.monto}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText id="lbldescuento" value="Descuento"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{dto.descuento}"/>
+                                                        </h:column>
+<!--                                                        <h:column>
                                                             <f:facet name="header">
                                                                 <h:outputText id="lblAccionEliminar" value="Eliminar"/>
                                                             </f:facet>
-                                                            <h:commandLink action="#{transaccionUnitariaMB.delete()}" actionListener="#{transaccionUnitariaMB.seleccionarCategoria}" immediate="true" styleClass="btn mb-1 btn-outline-danger"> <f:param name="claveSel" value="#{dto.idCategoria}"/> Eliminar</h:commandLink>
+                                                            <h:commandLink action="#{transaccionMB.deleteUnitario()}" actionListener="#{transaccionMB.seleccionarTransaccionTotal}" immediate="true" styleClass="btn mb-1 btn-outline-danger"> <f:param name="claveSel" value="#{dto.idTransaccionUnitaria}"/> Eliminar</h:commandLink>
                                                         </h:column>-->
                                                     </h:dataTable>
-                                                </h:form>
-                                            </f:view>
                                         </div>
 
 
@@ -148,7 +157,7 @@
 
                                             <div class="form-group row text-center">
                                                 <div class="col-lg-12 ml-auto text-center">
-                                                    <h:commandLink rendered="#{transaccionMB.modoCrear}" action="#{transaccionMB.add()}" class="btn btn-primary"> <f:param name="idUser" value="#{sessionScope.idusu}"/>Crear Transaccion</h:commandLink>
+                                                    <h:commandLink rendered="#{transaccionMB.modoCrear}" action="#{transaccionMB.add()}" class="btn btn-primary"> <f:param name="idUser" value="#{sessionScope.idusu}"/> <f:param name="total" value="#{transaccionMB.dto.total}"/> <f:param name="descuentoTotal" value="#{transaccionMB.dto.descuentoTotal}"/> <f:param name="netoTotal" value="#{transaccionMB.dto.netoTotal}"/>Crear Transaccion</h:commandLink>
                                                     <h:commandLink rendered="#{transaccionMB.modoActualizar}" action="#{transaccionMB.update()}" class="btn btn-primary">Actualizar Transaccion</h:commandLink>
                                                 </div>
                                             </div>
