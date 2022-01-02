@@ -5,6 +5,7 @@ package com.ipn.mx.dao;
 import com.ipn.mx.entities.Grafica;
 import com.ipn.mx.entities.TipoRol;
 import com.ipn.mx.entities.Usuario;
+import com.ipn.mx.utilities.EnviarMail;
 import com.ipn.mx.utilities.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -56,6 +57,8 @@ public class UsuarioDAO {
             t.begin();
             s.save(dto);
             t.commit();
+            EnviarMail em = new EnviarMail();
+            boolean tipoR = em.enviarCorreo(dto.getEmail(), "Usuario creado", "Has sido dado de alta en la plataforma, ya puedes entrar");
 
         }catch (HibernateException he){
             if(t != null && t.isActive()){
@@ -72,6 +75,8 @@ public class UsuarioDAO {
             t.begin();
             s.update(dto);
             t.commit();
+            EnviarMail em = new EnviarMail();
+            boolean tipoR = em.enviarCorreo(dto.getEmail(), "Usuario actualizado", "Tu usuario a sido actualizado");
 
         }catch (HibernateException he){
             if(t != null && t.isActive()){
@@ -88,6 +93,8 @@ public class UsuarioDAO {
             dto = (s.get(dto.getClass(),dto.getIdUsuario()));
             s.delete(dto);
             t.commit();
+            EnviarMail em = new EnviarMail();
+            boolean tipoR = em.enviarCorreo(dto.getEmail(), "Usuario eliminado", "Tu usuario a sido elminiado");
 
         }catch (HibernateException he){
             if(t != null && t.isActive()){

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <ui:include src="../shared/redirect.xhtml"></ui:include>
+    <ui:include src="../shared/levelRedirect.xhtml"></ui:include>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title></title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"/>
+    <!-- Custom Stylesheet -->
+    <ui:include src="../shared/resources.xhtml"></ui:include>
+</h:head>
+<h:body>
+
+    <ui:include src="../shared/loading.xhtml"></ui:include>
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <ui:include src="../shared/navHeader.xhtml"></ui:include>
+
+        <ui:include src="../shared/header.xhtml"></ui:include>
+
+        <ui:include src="../shared/sideBarNav.xhtml"></ui:include>
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h2 class="card-title card-title-line px-4 mb-3" style="font-size: 40px">Transacción Unitaria</h2>
+                                <f:view>
+                                    <h:form id="frmProducto">
+                                        <div class="form-validation">
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-idCliente">Producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:selectOneMenu value="#{transaccionUnitariaMB.dto.idPro}" id="val-idCliente" styleClass="form-control">
+                                                        <f:selectItems var="cat" itemLabel="#{cat.nombreProducto}" itemValue="#{cat.idProducto}" value="#{transaccionUnitariaMB.listProducto}"
+                                                        />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">Total <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText disabled="true" value="#{cat.pesoProducto}"  styleClass="form-control" id="val-name"
+                                                                 name="val-name" p:placeholder="Escriba el nombre.."/>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group row text-center">
+                                                <div class="col-lg-12 ml-auto text-center">
+                                                    <h:commandLink rendered="#{transaccionMB.modoCrear}" action="#{transaccionMB.add()}" class="btn btn-primary"> <f:param name="idUser" value="#{sessionScope.idusu}"/>Crear Transaccion</h:commandLink>
+                                                    <h:commandLink rendered="#{transaccionMB.modoActualizar}" action="#{transaccionMB.update()}" class="btn btn-primary">Actualizar Transaccion</h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </f:view>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+
+
+    <ui:include src="../shared/resourcesJs.xhtml"></ui:include>
+
+
+</h:body>
+</html>

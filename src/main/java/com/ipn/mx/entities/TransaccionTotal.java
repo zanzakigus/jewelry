@@ -42,4 +42,13 @@ public class TransaccionTotal implements Serializable {
         this.fecha= new Date();
 
     }
+
+    @Transient
+    private Integer idTipo;
+
+    @Transient
+    private Integer idUsu;
+
+    @Transient
+    private Integer idCl;
 }

@@ -32,4 +32,7 @@ public class TransaccionUnitaria implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idProducto")
     private Producto idProducto;
+
+    @Transient
+    private Integer idPro;
 }

@@ -42,9 +42,9 @@
                                 <i class="icon-basket menu-icon"></i> <span class="nav-text">Facturación</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><h:commandLink action="./email-inbox.html">Crear Transacción</h:commandLink></li>
-                                <li><h:commandLink action="./email-read.html">Lista de Transacciones</h:commandLink></li>
-                                <li><h:commandLink action="./email-compose.html">Graficas</h:commandLink></li>
+                                <li><h:commandLink action="#{transaccionMB.preparedAdd()}">Crear Transacción</h:commandLink></li>
+                                <li><h:commandLink action="#{transaccionMB.preparedIndex()}">Lista de Transacciones</h:commandLink></li>
+                                <li><h:commandLink action="#{transaccionMB.obtenerGrafica()}">Graficas</h:commandLink></li>
                             </ul>
                         </li>
                         <li>

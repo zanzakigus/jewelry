@@ -81,6 +81,7 @@ public class LoginMB extends BaseBean implements Serializable {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
                 session.setAttribute("usuario", dto.getNombreUsuario());
+                session.setAttribute("idusu", dto.getIdUsuario());
                 session.setAttribute("tipo", dto.getIdTipoRol().getDescripcionTipoRol());
                 logged = true;
                 preparedLogged();
