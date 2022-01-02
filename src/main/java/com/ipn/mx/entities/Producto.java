@@ -36,5 +36,8 @@ public class Producto implements Serializable {
     @JoinColumn(name = "idCategoria")
     private Categoria idCategoria;
 
+    @Transient
+    private Integer idCat;
+
 
 }

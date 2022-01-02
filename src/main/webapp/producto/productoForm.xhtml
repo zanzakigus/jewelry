@@ -2,38 +2,169 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-    <title>Form Producto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" type=""></script>
+    <ui:include src="../shared/redirect.xhtml"></ui:include>
+    <ui:include src="../shared/levelRedirect.xhtml"></ui:include>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title></title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"/>
+    <!-- Custom Stylesheet -->
+    <ui:include src="../shared/resources.xhtml"></ui:include>
 </h:head>
 <h:body>
-    <div class="container">
-        <div class="card border-primary mb-3">
-            <div class="card-header">
-                <h2 class="text-primary text-center">
-                    Form de Productos
-                </h2>
-            </div>
-            <div class="card-body text-primary">
-                <div class="table-responsive">
-                    <f:view>
-                        <h:form id="frmProductoForm">
-                            <h:inputHidden id="accion" value="#{productoMB.accion}"/>
-                            <h:panelGrid columns="3">
-                                <h:outputLabel for="" id="lblNombreProducto" styleClass="form-label" value="Nombre Producto"/>
-                                <h:inputText id="txtNombreProducto" styleClass="form-control" value="#{productoMB.dto.nombreProducto}"/>
-                            </h:panelGrid>
 
+    <ui:include src="../shared/loading.xhtml"></ui:include>
 
-                        </h:form>
-                    </f:view>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <ui:include src="../shared/navHeader.xhtml"></ui:include>
+
+        <ui:include src="../shared/header.xhtml"></ui:include>
+
+        <ui:include src="../shared/sideBarNav.xhtml"></ui:include>
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                    </ol>
                 </div>
             </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h2 class="card-title card-title-line px-4 mb-3" style="font-size: 40px">Producto</h2>
+                                <f:view>
+                                    <h:form id="frmProducto">
+                                        <div class="form-validation">
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Nombre de la producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{productoMB.dto.nombreProducto}"  styleClass="form-control" id="val-username"
+                                                                 name="val-username" p:placeholder="Escriba la producto.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-descripcion">Descripción de la producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText  value="#{productoMB.dto.descripcionProducto}" styleClass="form-control" id="val-descripcion"
+                                                                  name="val-descripcion" p:placeholder="Escriba la descripción.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-material">Material del producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText  value="#{productoMB.dto.materialProducto}" styleClass="form-control" id="val-material"
+                                                                  name="val-descripcion" p:placeholder="Escriba el tipo de material.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-pesoProducto">Peso del producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText  value="#{productoMB.dto.pesoProducto}" styleClass="form-control" id="val-pesoProducto"
+                                                                  name="val-descripcion" p:placeholder="Escriba el pesos.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-precio">Precio del producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText  value="#{productoMB.dto.precioProducto}" styleClass="form-control" id="val-precio"
+                                                                  name="val-descripcion" p:placeholder="Escriba el precio $.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-descuento">Precio del producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText  value="#{productoMB.dto.descuentoProducto}" styleClass="form-control" id="val-descuento"
+                                                                  name="val-descripcion" p:placeholder="Escriba el descuento $.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-exitencia">Stock del producto<span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText  value="#{productoMB.dto.stockProducto}" styleClass="form-control" id="val-exitencia"
+                                                                  name="val-descripcion" p:placeholder="Escriba el stock.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Categoría la producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:selectOneMenu value="#{productoMB.dto.idCat}" id="val-idCategoriaa" styleClass="form-control">
+                                                        <f:selectItems var="cat" itemLabel="#{cat.nombreCategoria}" itemValue="#{cat.idCategoria}" value="#{productoMB.listCategoria}"
+                                                        />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group row text-center">
+                                                <div class="col-lg-12 ml-auto text-center">
+                                                    <h:commandLink rendered="#{productoMB.modoCrear}" action="#{productoMB.add()}" class="btn btn-primary">Crear Producto</h:commandLink>
+                                                    <h:commandLink rendered="#{productoMB.modoActualizar}" action="#{productoMB.update()}" class="btn btn-primary">Actualizar Producto</h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </f:view>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #/ container -->
         </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+
+
+    <ui:include src="../shared/resourcesJs.xhtml"></ui:include>
+
 
 </h:body>
 </html>
-

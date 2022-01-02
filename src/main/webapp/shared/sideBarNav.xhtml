@@ -72,9 +72,9 @@
                                     <i class="icon-diamond menu-icon"></i> <span class="nav-text">Productos</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><h:commandLink action="./email-inbox.html">Crear Producto</h:commandLink></li>
-                                    <li><h:commandLink action="./email-read.html">Lista de Productos</h:commandLink></li>
-                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                    <li><h:commandLink action="#{productoMB.preparedAdd()}">Crear Producto</h:commandLink></li>
+                                    <li><h:commandLink action="#{productoMB.preparedIndex()}">Lista de Productos</h:commandLink></li>
+                                    <li><h:commandLink action="#{productoMB.obtenerGrafica()}">Grafica</h:commandLink></li>
                                 </ul>
                             </li>
                             <li>
