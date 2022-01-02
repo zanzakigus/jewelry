@@ -99,12 +99,12 @@
                                                     </f:facet>
                                                     <h:commandLink action="#{transaccionMB.mostrarReporteDetalle}" actionListener="#{transaccionMB.seleccionarTransaccionTotal}" immediate="true" styleClass="btn mb-1 btn-outline-primary"> <f:param name="claveSel" value="#{dto.idTransaccionTotal}"/> Generar PDF</h:commandLink>
                                                 </h:column>
-                                                <h:column>
+<!--                                                <h:column>
                                                     <f:facet name="header">
                                                         <h:outputText id="lblAccionEliminar" value="Eliminar"/>
                                                     </f:facet>
                                                     <h:commandLink action="#{transaccionMB.delete()}" actionListener="#{transaccionMB.seleccionarTransaccionTotal}" immediate="true" styleClass="btn mb-1 btn-outline-danger"> <f:param name="claveSel" value="#{dto.idTransaccionTotal}"/> Eliminar</h:commandLink>
-                                                </h:column>
+                                                </h:column>-->
                                             </h:dataTable>
                                         </h:form>
                                     </f:view>
