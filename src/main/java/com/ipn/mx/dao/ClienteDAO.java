@@ -1,6 +1,7 @@
 package com.ipn.mx.dao;
 
 import com.ipn.mx.entities.Cliente;
+import com.ipn.mx.entities.Grafica;
 import com.ipn.mx.utilities.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -96,6 +97,32 @@ public class ClienteDAO {
                 t.rollback();
             }
         }
+        return list;
+    }
+
+    public List obtenerDatosGrafica() {
+
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction t = s.getTransaction();
+        List list = new ArrayList();
+
+        try {
+            t.begin();
+            Query q = s.createQuery("select p.idCiudad.nombreCiudad as nombreCategoria , count(*) as cantidad from Cliente p  group by  p.idCiudad.nombreCiudad");
+            for (Object[] c: (List<Object[]>) q.list()) {
+                Grafica dto = new Grafica();
+                dto.setNombre(String.valueOf(c[0]));
+                dto.setCantidad(Integer.parseInt(String.valueOf( c[1])));
+                list.add(dto);
+            }
+            t.commit();
+
+        }catch (HibernateException he){
+            if(t != null && t.isActive()){
+                t.rollback();
+            }
+        }
+
         return list;
     }
 

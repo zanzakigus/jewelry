@@ -39,4 +39,11 @@ public class Cliente implements Serializable {
     @JoinColumn(name = "idCiudad")
     private Ciudad idCiudad;
 
+
+    @Transient
+    private Integer idDCi;
+
+    @Transient
+    private Integer idDEs;
+
 }

@@ -62,9 +62,9 @@
                                     <i class="icon-user menu-icon"></i> <span class="nav-text">Clientes</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><h:commandLink action="./email-inbox.html">Crear Cliente</h:commandLink></li>
-                                    <li><h:commandLink action="./email-read.html">Lista de Clientes</h:commandLink></li>
-                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                    <li><h:commandLink action="#{clienteMB.preparedAdd()}">Crear Cliente</h:commandLink></li>
+                                    <li><h:commandLink action="#{clienteMB.preparedIndex()}">Lista de Clientes</h:commandLink></li>
+                                    <li><h:commandLink action="#{clienteMB.obtenerGrafica()}">Grafica</h:commandLink></li>
                                 </ul>
                             </li>
                             <li>

@@ -51,72 +51,102 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h2 class="card-title card-title-line px-4 mb-3" style="font-size: 40px">Usuario</h2>
+                                <h2 class="card-title card-title-line px-4 mb-3" style="font-size: 40px">Cliente</h2>
                                 <f:view>
                                     <h:form id="frmProducto">
                                         <div class="form-validation">
+
                                             <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Nombre de usuario <span
+                                                <label class="col-lg-4 col-form-label" for="val-name">Nombre <span
                                                         class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <h:inputText value="#{usuarioMB.dto.nombreUsuario}"  styleClass="form-control" id="val-username"
-                                                                 name="val-username" p:placeholder="Escriba el nombre usuario.."/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Email <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <h:inputText value="#{usuarioMB.dto.email}"  styleClass="form-control" id="val-email"
-                                                                   name="val-email" p:placeholder="Escriba el email.."/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Password <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <h:inputSecret value="#{usuarioMB.dto.password}"  styleClass="form-control" id="val-pass"
-                                                                 name="val-pass" p:placeholder="Escriba la contraseña.."/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Nombre <span
-                                                        class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-lg-6">
-                                                    <h:inputText value="#{usuarioMB.dto.nombre}"  styleClass="form-control" id="val-name"
+                                                    <h:inputText value="#{clienteMB.dto.nombre}"  styleClass="form-control" id="val-name"
                                                                  name="val-name" p:placeholder="Escriba el nombre.."/>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Paterno <span
+                                                <label class="col-lg-4 col-form-label" for="val-name">Paterno <span
                                                         class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <h:inputText value="#{usuarioMB.dto.paterno}"  styleClass="form-control" id="val-paterno"
+                                                    <h:inputText value="#{clienteMB.dto.paterno}"  styleClass="form-control" id="val-paterno"
                                                                  name="val-paterno" p:placeholder="Escriba el apellido paterno.."/>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Materno <span
+                                                <label class="col-lg-4 col-form-label" for="val-name">Materno <span
                                                         class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <h:inputText value="#{usuarioMB.dto.materno}"  styleClass="form-control" id="val-materno"
+                                                    <h:inputText value="#{clienteMB.dto.materno}"  styleClass="form-control" id="val-materno"
                                                                  name="val-materno" p:placeholder="Escriba el apellido materno.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">Email <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{clienteMB.dto.email}"  styleClass="form-control" id="val-email"
+                                                                 name="val-materno" p:placeholder="Escriba el email.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">Telefono <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{clienteMB.dto.telefono}"  styleClass="form-control" id="val-telefono"
+                                                                 name="val-materno" p:placeholder="Escriba el telefono.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">Calle <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{clienteMB.dto.calle}"  styleClass="form-control" id="val-calle"
+                                                                 name="val-materno" p:placeholder="Escriba la calle.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">Colonia <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{clienteMB.dto.colonia}"  styleClass="form-control" id="val-colonia"
+                                                                 name="val-materno" p:placeholder="Escriba la colonia.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">CP <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{clienteMB.dto.cp}"  styleClass="form-control" id="val-CP"
+                                                                 name="val-materno" p:placeholder="Escriba el CP.."/>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Tipo de usuario <span
+                                                <label class="col-lg-4 col-form-label" for="val-name">Estado<span
                                                         class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <h:selectOneMenu value="#{usuarioMB.dto.idTipo}" id="val-idCategoriaa" styleClass="form-control">
-                                                        <f:selectItems var="cat" itemLabel="#{cat.descripcionTipoRol}" itemValue="#{cat.idTipoRol}" value="#{usuarioMB.listTipoRol}"
+                                                    <h:selectOneMenu value="#{clienteMB.dto.idDEs}" id="val-idEstado" styleClass="form-control">
+                                                        <f:selectItems var="est" itemLabel="#{est.nombreEstado}" itemValue="#{est.idEstado}" value="#{clienteMB.listEstado}"
+                                                        />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-name">Ciudad <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:selectOneMenu value="#{clienteMB.dto.idDCi}" id="val-idCategoriaa" styleClass="form-control">
+                                                        <f:selectItems var="cat" itemLabel="#{cat.nombreCiudad}" itemValue="#{cat.idCiudad}" value="#{clienteMB.listCiudad}"
                                                         />
                                                     </h:selectOneMenu>
                                                 </div>
@@ -127,8 +157,8 @@
 
                                             <div class="form-group row text-center">
                                                 <div class="col-lg-12 ml-auto text-center">
-                                                    <h:commandLink rendered="#{usuarioMB.modoCrear}" action="#{usuarioMB.add()}" class="btn btn-primary">Crear Usuario</h:commandLink>
-                                                    <h:commandLink rendered="#{usuarioMB.modoActualizar}" action="#{usuarioMB.update()}" class="btn btn-primary">Actualizar Usuario</h:commandLink>
+                                                    <h:commandLink rendered="#{clienteMB.modoCrear}" action="#{clienteMB.add()}" class="btn btn-primary">Crear Cliente</h:commandLink>
+                                                    <h:commandLink rendered="#{clienteMB.modoActualizar}" action="#{clienteMB.update()}" class="btn btn-primary">Actualizar Cliente</h:commandLink>
                                                 </div>
                                             </div>
                                         </div>
