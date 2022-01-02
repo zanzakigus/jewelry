@@ -49,56 +49,62 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title card-title-line">Lista de Producto</h2>
+                                <h2 class="card-title card-title-line">Lista de Usuarios</h2>
                                 <div class="table-responsive">
                                     <f:view>
                                         <h:form>
-                                            <h:commandLink action="#{productoMB.mostrarReporte()}" immediate="true" styleClass="btn mb-1 btn-info">Obtener Reporte</h:commandLink>
-                                            <h:dataTable var="dto" value="#{productoMB.listProducto}" class="table table-striped table-bordered zero-configuration">
+                                            <h:commandLink action="#{usuarioMB.mostrarReporte()}" immediate="true" styleClass="btn mb-1 btn-info">Obtener Reporte</h:commandLink>
+                                            <h:dataTable var="dto" value="#{usuarioMB.listUsuario}" class="table table-striped table-bordered zero-configuration">
                                                 <h:column>
                                                     <f:facet name="header">
                                                         <h:outputLabel id="ldIdProducto" value="Clave"/>
                                                     </f:facet>
-                                                    <h:outputText value="#{dto.idProducto}"/>
+                                                    <h:outputText value="#{dto.idUsuario}"/>
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">
-                                                        <h:outputLabel id="ldNombreProducto" value="Nombre"/>
+                                                        <h:outputLabel id="ldNombreUsuario" value="Nombre de usuario"/>
                                                     </f:facet>
-                                                    <h:outputText value="#{dto.nombreProducto}"/>
+                                                    <h:outputText value="#{dto.nombreUsuario}"/>
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">
-                                                        <h:outputLabel id="ldDescripcionProducto" value="Descripcion"/>
+                                                        <h:outputLabel id="ldNombre" value="Nombre"/>
                                                     </f:facet>
-                                                    <h:outputText value="#{dto.descripcionProducto}"/>
+                                                    <h:outputText value="#{dto.nombre}"/>
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">
-                                                        <h:outputLabel id="ldPrecioProducto" value="Precio"/>
+                                                        <h:outputLabel id="ldPaterno" value="Paterno"/>
                                                     </f:facet>
-                                                    <h:outputText value="#{dto.precioProducto}"/>
+                                                    <h:outputText value="#{dto.paterno}"/>
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">
-                                                        <h:outputLabel id="ldExistenciaProducto" value="Existencia"/>
+                                                        <h:outputLabel id="ldMaterno" value="Materno"/>
                                                     </f:facet>
-                                                    <h:outputText value="#{dto.stockProducto}"/>
+                                                    <h:outputText value="#{dto.materno}"/>
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">
-                                                        <h:outputLabel id="ldClaveCategoria" value="Categoria"/>
+                                                        <h:outputLabel id="ldEmail" value="Email"/>
                                                     </f:facet>
-                                                    <h:outputText value="#{dto.idCategoria.nombreCategoria}"/>
+                                                    <h:outputText value="#{dto.email}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputLabel id="ldClaveCategoria" value="Tipo de usuario"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{dto.idTipoRol.descripcionTipoRol}"/>
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">
                                                         <h:outputLabel id="ldAccionActualizar" value="Actualizar"/>
                                                     </f:facet>
-                                                    <h:commandLink action="#{productoMB.preparedUpdate()}"
-                                                                   actionListener="#{productoMB.seleccionarProducto(Producto)}" immediate="true"
+                                                    <h:commandLink action="#{usuarioMB.preparedUpdate()}"
+                                                                   actionListener="#{usuarioMB.seleccionarUsuario(Usuario)}" immediate="true"
                                                                    class="btn btn-outline-info">
-                                                        <f:param name="claveSel" value="#{dto.idProducto}"/>
+                                                        <f:param name="claveSel" value="#{dto.idUsuario}"/>
                                                         Actualizar
                                                     </h:commandLink>
                                                 </h:column>
@@ -106,10 +112,10 @@
                                                     <f:facet name="header">
                                                         <h:outputLabel id="ldAccionEliminar" value="Eliminar"/>
                                                     </f:facet>
-                                                    <h:commandLink action="#{productoMB.delete()}"
-                                                                   actionListener="#{productoMB.seleccionarProducto(Producto)}" immediate="true"
+                                                    <h:commandLink action="#{usuarioMB.delete()}"
+                                                                   actionListener="#{usuarioMB.seleccionarUsuario(Usuario)}" immediate="true"
                                                                    class="btn btn-outline-danger">
-                                                        <f:param name="claveSel" value="#{dto.idProducto}"/>
+                                                        <f:param name="claveSel" value="#{dto.idUsuario}"/>
                                                         Eliminar
                                                     </h:commandLink>
                                                 </h:column>
@@ -154,5 +160,3 @@
 
 </h:body>
 </html>
-
-

@@ -2,6 +2,7 @@ package com.ipn.mx.dao;
 
 
 
+import com.ipn.mx.entities.Grafica;
 import com.ipn.mx.entities.TipoRol;
 import com.ipn.mx.entities.Usuario;
 import com.ipn.mx.utilities.HibernateUtil;
@@ -131,6 +132,32 @@ public class UsuarioDAO {
                 t.rollback();
             }
         }
+        return list;
+    }
+
+    public List obtenerDatosGrafica() {
+
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction t = s.getTransaction();
+        List list = new ArrayList();
+
+        try {
+            t.begin();
+            Query q = s.createQuery("select p.idTipoRol.descripcionTipoRol as nombreCategoria , count(*) as cantidad from Usuario p  group by  p.idTipoRol.descripcionTipoRol");
+            for (Object[] c: (List<Object[]>) q.list()) {
+                Grafica dto = new Grafica();
+                dto.setNombre(String.valueOf(c[0]));
+                dto.setCantidad(Integer.parseInt(String.valueOf( c[1])));
+                list.add(dto);
+            }
+            t.commit();
+
+        }catch (HibernateException he){
+            if(t != null && t.isActive()){
+                t.rollback();
+            }
+        }
+
         return list;
     }
 

@@ -92,9 +92,9 @@
                                     <i class="icon-people menu-icon"></i> <span class="nav-text">Usuarios</span>
                                 </a>
                                 <ul aria-expanded="false">
-                                    <li><h:commandLink action="./email-inbox.html">Crear Usuario</h:commandLink></li>
-                                    <li><h:commandLink action="./email-read.html">Lista de Usuarios</h:commandLink></li>
-                                    <li><h:commandLink action="./email-compose.html">Grafica</h:commandLink></li>
+                                    <li><h:commandLink action="#{usuarioMB.preparedAdd()}">Crear Usuario</h:commandLink></li>
+                                    <li><h:commandLink action="#{usuarioMB.preparedIndex()}">Lista de Usuarios</h:commandLink></li>
+                                    <li><h:commandLink action="#{usuarioMB.obtenerGrafica()}">Grafica</h:commandLink></li>
                                 </ul>
                             </li>
                         </ui:fragment>

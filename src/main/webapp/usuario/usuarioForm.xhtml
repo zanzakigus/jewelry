@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <ui:include src="../shared/redirect.xhtml"></ui:include>
+    <ui:include src="../shared/levelRedirect.xhtml"></ui:include>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title></title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"/>
+    <!-- Custom Stylesheet -->
+    <ui:include src="../shared/resources.xhtml"></ui:include>
+</h:head>
+<h:body>
+
+    <ui:include src="../shared/loading.xhtml"></ui:include>
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <ui:include src="../shared/navHeader.xhtml"></ui:include>
+
+        <ui:include src="../shared/header.xhtml"></ui:include>
+
+        <ui:include src="../shared/sideBarNav.xhtml"></ui:include>
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h2 class="card-title card-title-line px-4 mb-3" style="font-size: 40px">Usuario</h2>
+                                <f:view>
+                                    <h:form id="frmProducto">
+                                        <div class="form-validation">
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Nombre de usuario <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{usuarioMB.dto.nombreUsuario}"  styleClass="form-control" id="val-username"
+                                                                 name="val-username" p:placeholder="Escriba el nombre usuario.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Password <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputSecret value="#{usuarioMB.dto.password}"  styleClass="form-control" id="val-pass"
+                                                                 name="val-pass" p:placeholder="Escriba la contraseña.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Nombre <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{usuarioMB.dto.nombre}"  styleClass="form-control" id="val-name"
+                                                                 name="val-name" p:placeholder="Escriba el nombre.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Paterno <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{usuarioMB.dto.paterno}"  styleClass="form-control" id="val-paterno"
+                                                                 name="val-paterno" p:placeholder="Escriba el apellido paterno.."/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Materno <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:inputText value="#{usuarioMB.dto.materno}"  styleClass="form-control" id="val-materno"
+                                                                 name="val-materno" p:placeholder="Escriba el apellido materno.."/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username">Categoría la producto <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <h:selectOneMenu value="#{usuarioMB.dto.idTipo}" id="val-idCategoriaa" styleClass="form-control">
+                                                        <f:selectItems var="cat" itemLabel="#{cat.descripcionTipoRol}" itemValue="#{cat.idTipoRol}" value="#{usuarioMB.listTipoRol}"
+                                                        />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group row text-center">
+                                                <div class="col-lg-12 ml-auto text-center">
+                                                    <h:commandLink rendered="#{usuarioMB.modoCrear}" action="#{usuarioMB.add()}" class="btn btn-primary">Crear Usuario</h:commandLink>
+                                                    <h:commandLink rendered="#{usuarioMB.modoActualizar}" action="#{usuarioMB.update()}" class="btn btn-primary">Actualizar Usuario</h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </f:view>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+
+
+    <ui:include src="../shared/resourcesJs.xhtml"></ui:include>
+
+
+</h:body>
+</html>

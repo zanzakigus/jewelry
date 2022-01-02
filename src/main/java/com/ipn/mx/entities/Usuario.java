@@ -31,4 +31,7 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "idTipoRol")
     private TipoRol idTipoRol;
 
+    @Transient
+    private Integer idTipo;
+
 }
